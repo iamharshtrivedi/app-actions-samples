@@ -24,6 +24,17 @@
     -->
     <!-- Add Get Thing BII capability   -->
 
+    <capability android:name="actions.intent.GET_THING">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.harsh.android.fitactions"
+            android:targetClass="com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity">
+            <parameter
+                android:name="thing.name"
+                android:key="q"/>
+        </intent>
+    </capability>
+
 
     <!--    OPEN APP FEATURE with inline inventory
         hhttps://developer.android.com/reference/app-actions/built-in-intents/common/open-app-feature
@@ -33,8 +44,43 @@
     -->
     <!-- Add Get Thing BII shortcuts   -->
 
+    <shortcut
+        android:shortcutId="active_tasks"
+        android:shortcutShortLabel="@string/label_active"
+        android:enabled="false">
+        <capability-binding
+            android:key="actions.intent.OPEN_APP_FEATURE">
+            <parameter-binding
+                android:key="feature"
+                android:value="@array/active_tasks_synonyms" />
+        </capability-binding>
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="completed_tasks"
+        android:shortcutShortLabel="@string/label_completed"
+        android:enabled="false">
+        <capability-binding
+            android:key="actions.intent.OPEN_APP_FEATURE">
+            <parameter-binding
+                android:key="feature"
+                android:value="@array/completed_tasks_synonyms" />
+        </capability-binding>
+    </shortcut>
+
 
     <!-- Add Open App Feature BII capability   -->
+
+    <capability android:name="actions.intent.OPEN_APP_FEATURE">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.harsh.android.fitactions"
+            android:targetClass="com.example.android.architecture.blueprints.todoapp.tasks.TasksActivity">
+            <parameter
+                android:name="feature"
+                android:key="feature"/>
+        </intent>
+    </capability>
 
 
 
